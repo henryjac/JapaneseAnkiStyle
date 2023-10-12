@@ -5,11 +5,14 @@ Sサイス Small [size]
 Tシャツ T-shirt
 あ Oh
 あさごはん Breakfast
+あそびます Hang out with
 あたまがいい Smart
 あに Older Brother
 あね Older Sister
+あめ Rainy
 いいえ No
 いしゃ Doctor
+いつも Always
 いもうと Younger Sister
 いもうとさん Younger sister [your]
 うるさい Annoying
@@ -23,10 +26,12 @@ Tシャツ T-shirt
 おっと Husband
 おとうと Younger Brother
 おとうとさん Younger brother [your]
+おどります Dance
 おにいさん Older brother [your]
 おねえさん Older sister [your]
 おもしろい Funny
 おんがく Music
+おんせん Hot spring
 お母さん Mom [your] (おかあさん)
 お父さん Dad [your] (おとうさん)
 かいしゃ Office
@@ -36,9 +41,13 @@ Tシャツ T-shirt
 かっこいい Cool
 かばん Bag
 から From [time]
+があります Have [object]
+がいます Have [people]
 がくせい Student
 ききます Listen
 きれい Clean
+くもり Cloudy
+ぐらい Around [hours]
 ここ Here
 これ This
 こんにちは Hello
@@ -48,8 +57,11 @@ Tシャツ T-shirt
 ごぜん AM
 ごはん Rice
 ごろ Around [time]
+さむい Cold
 しずか Quiet
 します Play
+しゅうまつ Weekend
+しゅくだい Homework
 じゃあ Okay then
 じゅぎょう Class
 じんじゃ Shrine
@@ -64,18 +76,31 @@ Tシャツ T-shirt
 だれ Who
 ちかい Close
 つかいます Use
+つぎ Next
 つま Wife
+てんき Weather
+でかけます Go out
 とても Very
+ともだち Friend
 と言います name is (といいます)
 どう How
 どこ Where
 ながい Long
+なつ Summer
 ね Isn't it
+はありません Not have [object]
 はい Yes
+はいません Have [people]
+はじまります Begins
 はじめまして Nice to meet you
 はな Flower
+はる Spring
+はれ Sun
 ばんごはん Dinner
+ひらがな Hiragana
 ひるごはん Lunch
+ふゆ Winter
+べんきょう Study
 べんごし Lawyer
 ほんとうに Really
 ほんとうにですか Really?
@@ -86,6 +111,8 @@ Tシャツ T-shirt
 まんが Manga
 みず Water
 みどり Green
+むずかしい Difficult
+も Also/To
 もの Stuff
 やさしい Nice
 よく Often
@@ -107,17 +134,25 @@ Tシャツ T-shirt
 ジャケット Jacket
 ジャズ Jazz
 ジュース Juice
+スペイン Spain
+スペイン語 Spanish
 タクシー Taxi
+ドラマ Drama
 ドレソ Dress
 ナビ GPS
 ニ Two (に)
 バス Bus
 バスケットボール Basketball
+バレエ Ballet
+パフォーマンス Performance
 フライドポタト French Fries
 ブラジル Brazil
+プール Pool
 ベトナム Vitenam
+ヨガ Yoga
 ライオン Lion
 レストラン Restaurant
+レッスン Lesson
 ロック Rock
 一 One (いち)
 七 Seven (しち なな)
@@ -128,6 +163,7 @@ Tシャツ T-shirt
 五 Five (ご)
 京都 Kyoto (きょうと)
 人 Person (ひと)
+今夜 Tonight (こんや)
 今日 Today (きょう)
 休み Break (やすみ)
 休みの日 Day off (やすみのひ)
@@ -144,6 +180,7 @@ Tシャツ T-shirt
 分 Minute (ふん/ぷん)
 十 Ten (じゅう)
 千 Thousand (せん)
+半 Half [hours]
 卵 Egg (たまご)
 古い Old (ふるい)
 四 Four (よん)
@@ -153,19 +190,22 @@ Tシャツ T-shirt
 日曜日 Sunday (にちようび)
 日本 Japan (にほん)
 日本語 Japanese (にほんご)
+明日 Tomorrow
 時間 Hour (じかん)
 暗い Black (くらい)
 月曜日 Monday (げつようび)
 木曜日 Thursday (もくようび)
 本 Book (ほん)
 来ます Come (きます)
+来週 Next Week
 東京 Tokyo (とうきょう)
 母 Mom (はは)
 毎日 Every Day (まいにち)
 毎晩 Every Night (まいばん)
 毎朝 Every Morning (まいあさ)
-毎週 Every week (まいしゅう)
+毎週 Every Week (まいしゅう)
 水曜日 Wednesday (すいようび)
+漢字 Kanji (かんじ)
 火曜日 Tuesday (かようび)
 父 Dad (ちち)
 白い White (しろい)
@@ -173,6 +213,7 @@ Tシャツ T-shirt
 私 Me (わたし)
 行きます Go (いきます)
 見ます Watch (みます)
+言葉 Word (ことば)
 話します Talk
 読みます Read (よみます)
 買います Buy

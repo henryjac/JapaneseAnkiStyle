@@ -229,14 +229,13 @@ class TextLooper(tk.Frame):
         self.change_text()
 
     def bind_events(self):
-        self.window.bind("<Button-1>", lambda x: self.on_window_click(x,3))
-        self.window.bind("<space>", lambda x: self.on_window_click(x,3))
-        self.window.bind("<Return>", lambda x: self.on_window_click(x,3))
+        for cmd in ["<Button-1>","<space>","<Return>"]:
+            self.window.bind(cmd, lambda x: self.on_window_click(x,10))
         self.window.bind("<Control-w>", self.close_window)
         self.window.bind("<BackSpace>", self.change_back)
         self.window.bind("<Up>", lambda x: None)
         self.window.bind("<Down>", lambda x: None)
-        d = {"1":-3,"2":1,"3":3,"0":0}
+        d = {"1":-5,"2":5,"3":10,"0":0}
         for k,v in d.items():
             self.window.bind(k, lambda x, i=v: self.on_window_click(x,i))
 

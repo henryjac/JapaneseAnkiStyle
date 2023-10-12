@@ -60,7 +60,7 @@ def update_probabilities(conn, cursor, table, game):
     query = f"""
         SELECT familiarity, word
         FROM {table}
-        WHERE game = %s AND familiarity <= 40
+        WHERE game = %s AND familiarity <= 150
     """
     cursor.execute(query, (game,))
     res = cursor.fetchall()
