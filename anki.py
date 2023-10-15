@@ -2,6 +2,7 @@ import tkinter as tk
 import time, random, re, multiprocessing
 from PIL import Image, ImageTk
 import db_handler
+import settings
 
 def word_lists(file):
     with open(file) as f:
@@ -136,7 +137,7 @@ class TextLooper(tk.Frame):
         self.game_type = re.sub(r'.*/', "", game_type)
 
         self.conn, self.cursor = db_handler.get_db()
-        self.current_word = db_handler.select_random_with_probability(self.conn, self.cursor, "fam", self.game_type)
+        self.current_word = db_handler.select_random_with_probability(self.conn, self.cursor, settings.Global.table, self.game_type)
 
         self.mp_counter = mp_counter
         self.mp_trigger = mp_trigger
@@ -158,10 +159,11 @@ class TextLooper(tk.Frame):
 
         self.window.geometry(f"{background_image.width}x{background_image.height}")
 
+        text = format_text(self.current_word)
         self.label = tk.Label(
             window, 
             compound='center',
-            text=f"{self.current_word}", 
+            text=f"{text}", 
             font=("Helvetica", 60),
             image=self.background_photo,
         )
@@ -191,7 +193,7 @@ class TextLooper(tk.Frame):
                 self.cursor,
                 self.previous_word,
                 i,
-                "fam",
+                settings.Global.table,
                 self.game_type,
             )
 
@@ -199,23 +201,12 @@ class TextLooper(tk.Frame):
         self.previous_word = self.current_word
 
         if self.on_question:
-            self.current_word = db_handler.select_random_with_probability(self.conn, self.cursor, "fam", self.game_type)
+            self.current_word = db_handler.select_random_with_probability(self.conn, self.cursor, settings.Global.table, self.game_type)
         else:
-            self.current_word = db_handler.get_translation(self.conn, self.cursor, self.previous_word, "fam")
+            self.current_word = db_handler.get_translation(self.conn, self.cursor, self.previous_word, settings.Global.table)
         text = self.current_word
 
-        text_width = max(map(lambda x: len(x), text.split("\n")))
-
-        # Adjust the width threshold based on your window size and layout
-
-        if text_width > 12 or (contains_japanese(text) and text_width > 5) or contains_both(text):
-            if " " in text:
-                text = "\n".join(text.split())
-            else:
-                midpoint = len(text)//2
-                text = "\n".join([text[:midpoint],text[midpoint:]])
-            if "/" in text:
-                text = "/\n".join(text.split("/"))
+        text = format_text(text)
 
         self.label.config(text=text)
 
@@ -246,6 +237,20 @@ class TextLooper(tk.Frame):
         self.label.destroy()
         self.window.destroy()
         create_window_with_looping_text(self.mp_counter, self.mp_trigger, self.mp_game_type)
+
+def format_text(text):
+    text_width = max(map(lambda x: len(x), text.split("\n")))
+
+    # Adjust the width threshold based on your window size and layout
+    if text_width > 12 or (contains_japanese(text) and text_width > 5) or contains_both(text):
+        if " " in text:
+            text = "\n".join(text.split())
+        else:
+            midpoint = len(text)//2
+            text = "\n".join([text[:midpoint],text[midpoint:]])
+        if "/" in text:
+            text = "/\n".join(text.split("/"))
+    return text
 
 def mp_anki_event(mp_counter, mp_trigger, mp_game_type, mp_exit_event):
     try:
@@ -280,7 +285,7 @@ def background_process(mp_counter, mp_trigger, game_type, mp_exit_event):
         time.sleep(2)
         if mp_trigger.value:
             mp_trigger.value = False
-            db_handler.update_probabilities(conn, cursor, "fam", game_type.value)
+            db_handler.update_probabilities(conn, cursor, settings.Global.table, game_type.value)
 
 def main():
     counter = multiprocessing.Value("i", 1)

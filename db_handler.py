@@ -1,6 +1,8 @@
 import random
+import re
 import mysql.connector
 import os
+import settings
 
 def get_db():
     conn = mysql.connector.connect(
@@ -21,7 +23,8 @@ def create_table(conn, cursor, table):
         translation VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci UNIQUE,
         familiarity INT,
         probability DECIMAL(6,5),
-        game VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+        game VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+        UNIQUE KEY (word, game)
     );
     """
     cursor.execute(query)
@@ -39,6 +42,8 @@ def add_to_table(conn, cursor, word, familiarity_update, table, game_type):
 
 def initial_add_to_table(conn, cursor, word, translation, familiarity_update, game_type, table):
     familiarity = max(1,familiarity_update + old_familiarity(conn, cursor, word, table))
+    if "<-" in game_type:
+        word = re.sub(r' \(.*\)', '', word)
     query = f"""
         INSERT INTO {table} (word, translation, familiarity, game)
         VALUES (%s, %s, 1, %s)
@@ -60,7 +65,7 @@ def update_probabilities(conn, cursor, table, game):
     query = f"""
         SELECT familiarity, word
         FROM {table}
-        WHERE game = %s AND familiarity <= 150
+        WHERE game = %s AND familiarity <= 15
     """
     cursor.execute(query, (game,))
     res = cursor.fetchall()
@@ -86,6 +91,24 @@ def old_familiarity(conn, cursor, word, table):
     except TypeError:
         return 0
 
+def remove_changed(conn, cursor, og_table, check_table, game):
+    """
+    Remove from og_table for where check_table doesnt have it
+    """
+    query = f"""
+        DELETE FROM {og_table}
+        WHERE word NOT IN
+        (SELECT word FROM {check_table})
+        AND game = (%s)
+    """
+    cursor.execute(query, (game,))
+    conn.commit()
+    query = f"""
+        DROP TABLE {check_table}
+    """
+    cursor.execute(query)
+    conn.commit()
+
 def sum_familiarities(conn, cursor, table):
     query = f"SELECT SUM(familiarity) FROM {table}"
     cursor.execute(query)
@@ -93,10 +116,14 @@ def sum_familiarities(conn, cursor, table):
     return tot
 
 def create_familiarities(conn, cursor, text_list_1, text_list_2, game_type):
-    table = "fam"
+    table = settings.Global.table
+    temp_table = "tmp"
     create_table(conn, cursor, table)
+    create_table(conn, cursor, temp_table)
     for text1,text2 in zip(text_list_1, text_list_2):
         initial_add_to_table(conn, cursor, text1, text2, 0, game_type, table)
+        initial_add_to_table(conn, cursor, text1, text2, 0, game_type, temp_table)
+    remove_changed(conn, cursor, table, temp_table, game_type)
     update_probabilities(conn, cursor, table, game_type)
 
 def get_translation(conn, cursor, word, table):
@@ -107,7 +134,10 @@ def get_translation(conn, cursor, word, table):
     """
     data = (word,)
     cursor.execute(query, data)
-    return cursor.fetchone()[0]
+    try:
+        return cursor.fetchone()[0]
+    except TypeError:
+        return "No more words left to learn."
 
 def select_random_with_probability(conn, cursor, table, game_type):
     # Generate a random number between 0 and 1
@@ -116,7 +146,7 @@ def select_random_with_probability(conn, cursor, table, game_type):
     query = f"""
         SELECT word, probability
         FROM {table}
-        WHERE game = %s AND familiarity <= 40
+        WHERE game = %s AND familiarity <= 15
     """
     data = (game_type,)
     cursor.execute(query, data)
@@ -124,7 +154,10 @@ def select_random_with_probability(conn, cursor, table, game_type):
     words = list(map(lambda x: x[0], result))
     probabilities = list(map(lambda x: float(x[1]), result))
     
-    choice = random.choices(words, weights=probabilities)[0]
+    try:
+        choice = random.choices(words, weights=probabilities)[0]
+    except:
+        return "No more words left to learn."
     return choice
 
 def main():

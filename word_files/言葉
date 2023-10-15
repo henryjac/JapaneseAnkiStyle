@@ -22,7 +22,6 @@ Tシャツ T-shirt
 おかし Snack
 おかしや Pastry Shop
 おきます Wake up
-おちゃ Green Tea
 おっと Husband
 おとうと Younger Brother
 おとうとさん Younger brother [your]
@@ -34,7 +33,7 @@ Tシャツ T-shirt
 おんせん Hot spring
 お母さん Mom [your] (おかあさん)
 お父さん Dad [your] (おとうさん)
-かいしゃ Office
+お茶 Green Tea
 かいしゃいん Office worker
 かじ Chore
 かぞく Family
@@ -43,7 +42,6 @@ Tシャツ T-shirt
 から From [time]
 があります Have [object]
 がいます Have [people]
-がくせい Student
 ききます Listen
 きれい Clean
 くもり Cloudy
@@ -53,10 +51,8 @@ Tシャツ T-shirt
 こんにちは Hello
 こんばんは Good evening
 ごかぞく Family [your]
-ごご PM
-ごぜん AM
-ごはん Rice
 ごろ Around [time]
+ご飯 Rice
 さむい Cold
 しずか Quiet
 します Play
@@ -68,18 +64,19 @@ Tシャツ T-shirt
 すし Sushi
 すてき Lovely
 すみません Excuse me
-せんせい Teacher
 そこ There
 それ That
 たのしい Fun
 だいがくせい College student
 だれ Who
 ちかい Close
+ちょうど Exactly
 つかいます Use
 つぎ Next
 つま Wife
 てんき Weather
 でかけます Go out
+とし City
 とても Very
 ともだち Friend
 と言います name is (といいます)
@@ -87,6 +84,7 @@ Tシャツ T-shirt
 どこ Where
 ながい Long
 なつ Summer
+にぎやか Lively
 ね Isn't it
 はありません Not have [object]
 はい Yes
@@ -106,6 +104,7 @@ Tシャツ T-shirt
 ほんとうにですか Really?
 ぼうし Hat
 また明日 See you tomorrow (またあした)
+まち Town
 まちます Wait
 まで Until [time]
 まんが Manga
@@ -117,6 +116,7 @@ Tシャツ T-shirt
 やさしい Nice
 よく Often
 りょうり Food/Cook
+りんご Apple
 アイスクレム Ice Cream
 アニソン Anime music
 アニメ Anime
@@ -163,28 +163,38 @@ Tシャツ T-shirt
 五 Five (ご)
 京都 Kyoto (きょうと)
 人 Person (ひと)
+今 Now (いま)
 今夜 Tonight (こんや)
 今日 Today (きょう)
 休み Break (やすみ)
 休みの日 Day off (やすみのひ)
 休みます Rest (やすみます)
 会います Meet up (あいます)
+会社 Company
 何 What (なに)
 何ですか What is it (なんですか)
 何時 What time (なんじ)
 何時間 How many hours
 何曜日 What day (なにょうび)
 何階 What floor
+作ります Make (つくります)
+僕 Me (ぼく)
+先生 Teacher
 八 Eight (はち)
 六 Six (ろく)
 分 Minute (ふん/ぷん)
 十 Ten (じゅう)
 千 Thousand (せん)
+午前 AM
+午後 PM
 半 Half [hours]
 卵 Egg (たまご)
 古い Old (ふるい)
+名前 Name (なまえ)
 四 Four (よん)
 土曜日 Saturday (どようび)
+学校 School (がっこう)
+学生 Student
 山 Mountain (やま)
 新しい New (あたらしい)
 日曜日 Sunday (にちようび)
@@ -193,6 +203,7 @@ Tシャツ T-shirt
 明日 Tomorrow
 時間 Hour (じかん)
 暗い Black (くらい)
+書きます Write (かきます)
 月曜日 Monday (げつようび)
 木曜日 Thursday (もくようび)
 本 Book (ほん)
@@ -208,9 +219,12 @@ Tシャツ T-shirt
 漢字 Kanji (かんじ)
 火曜日 Tuesday (かようび)
 父 Dad (ちち)
+牛乳 Milk (ぎゅうにゅう)
 白い White (しろい)
 百 Hundred (ひゃく)
 私 Me (わたし)
+肉 Meat (にく)
+英語 English (えいご)
 行きます Go (いきます)
 見ます Watch (みます)
 言葉 Word (ことば)
@@ -219,6 +233,7 @@ Tシャツ T-shirt
 買います Buy
 買い物 Shopping (かいもの)
 赤い Red (あかい)
+野菜 Vegetables (やさい)
 金曜日 Friday (きんようび)
 韓国 Korea (かんこく)
 韓国語 Korean (かんこくご)
