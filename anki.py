@@ -172,7 +172,7 @@ class TextLooper(tk.Frame):
 
         text = word_handler.format_text(text)
 
-        self.label.config(text=text)
+        self.label.config(text=text, fg="black")
 
     def on_window_click(self, event, i):
         if not self.on_question:

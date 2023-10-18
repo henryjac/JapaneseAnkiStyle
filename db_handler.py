@@ -55,9 +55,9 @@ def initial_add_to_table(conn, cursor, word, translation, familiarity_update, ga
     query = f"""
         INSERT INTO {table} (word, translation, pronounciation, familiarity, game)
         VALUES (%s, %s, %s, 1, %s)
-        ON DUPLICATE KEY UPDATE familiarity = {familiarity};
+        ON DUPLICATE KEY UPDATE familiarity = {familiarity}, pronounciation = %s, translation = %s;
     """
-    data = (word, translation, pronounciation, game_type)
+    data = (word, translation, pronounciation, game_type, pronounciation, translation)
     cursor.execute(query, data)
     conn.commit()
 
@@ -88,7 +88,7 @@ def update_probabilities(conn, cursor, table, game):
         """
         cursor.execute(query, (prob, game, word))
         conn.commit()
-
+ 
 def old_familiarity(conn, cursor, word, table):
     query = f"""
         SELECT familiarity FROM {table} WHERE word = %s
