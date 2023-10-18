@@ -135,8 +135,14 @@ def create_familiarities(conn, cursor, text_list_1, text_list_2, game_type):
     update_probabilities(conn, cursor, table, game_type)
 
 def get_translation(conn, cursor, word, table):
+    return _get_corresponding(conn, cursor, word, table, 'translation')
+
+def get_pronounciation(conn, cursor, word, table):
+    return _get_corresponding(conn, cursor, word, table, 'pronounciation')
+
+def _get_corresponding(conn, cursor, word, table, corresponding):
     query = f"""
-        SELECT translation
+        SELECT {corresponding}
         FROM {table}
         WHERE word = %s
     """

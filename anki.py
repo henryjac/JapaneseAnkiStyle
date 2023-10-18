@@ -1,61 +1,24 @@
 import tkinter as tk
 import time, random, re, multiprocessing
 from PIL import Image, ImageTk
-import db_handler
+import db_handler, word_handler
 import settings
-
-def word_lists(file):
-    with open(file) as f:
-        lines = f.readlines()
-
-    n = len(lines)
-    lines = list(map(lambda x: x.split(), lines))
-    japanese = [""]*n
-    translation = [""]*n
-    for i in range(n):
-        japanese[i] = lines[i][0]
-        translation[i] = " ".join(lines[i][1:])
-    return japanese, translation
-
-def newline_split_translation(trs):
-    new_trs = [""]*len(trs)
-    for i in range(len(trs)):
-        new_trs[i] = "\n".join(re.split(r'(\([^)]*\))', trs[i])).replace("(","").replace(")","")
-    return new_trs
-
-def contains_japanese(text):
-    # Define a regular expression for kanji, hiragana, and katakana
-    japanese_pattern = re.compile(r'[\u4e00-\u9faf\u3040-\u309f\u30a0-\u30ff]')
-
-    # Check if the text contains any Japanese characters
-    has_japanese = bool(re.search(japanese_pattern, text))
-
-    return has_japanese
-
-def contains_both(text):
-    jap = contains_japanese(text)
-    latin_pattern = re.compile(r'[A-Za-z]')
-    if jap and re.search(latin_pattern, text):
-        return True
-    else:
-        return False
-
-def setup_database():
-    files = ["漢字", "言葉", "verbs", "言葉 <-", "漢字 <-"]
-    for game in files:
-        file = re.sub(r' <-', '', game)
-        jap, trs = word_lists(f"word_files/{file}")
-
-        if '<-' in game:
-            trs,jap=jap,trs
-        conn, cursor = db_handler.get_db()
-        db_handler.create_familiarities(conn, cursor, jap, trs, game)
 
 class StartScreen(tk.Frame):
     def __init__(self, window, mp_counter, mp_trigger, mp_game_type):
         super().__init__(window)
 
         self.window = window
+        # Calculate window position for centering
+        screen_width = self.window.winfo_screenwidth()
+        screen_height = self.window.winfo_screenheight()
+        window_width = 523  # Replace with your desired window width
+        window_height = 523  # Replace with your desired window height
+        x = (screen_width - window_width) // 2
+        y = (screen_height - window_height) // 2
+
+        self.window.geometry(f"{window_width}x{window_height}+{x}+{y}")
+        self.window.resizable(False, False)
 
         background_image = Image.open("figs/kanji.png")
         self.background_photo = ImageTk.PhotoImage(background_image)
@@ -159,7 +122,7 @@ class TextLooper(tk.Frame):
 
         self.window.geometry(f"{background_image.width}x{background_image.height}")
 
-        text = format_text(self.current_word)
+        text = word_handler.format_text(self.current_word)
         self.label = tk.Label(
             window, 
             compound='center',
@@ -182,6 +145,7 @@ class TextLooper(tk.Frame):
         self.bind_events()
 
         self.on_question = True
+        self.on_pronounciation = False
 
     def db_setup(self):
         self.conn, self.cursor = db_handler.get_db()
@@ -206,7 +170,7 @@ class TextLooper(tk.Frame):
             self.current_word = db_handler.get_translation(self.conn, self.cursor, self.previous_word, settings.Global.table)
         text = self.current_word
 
-        text = format_text(text)
+        text = word_handler.format_text(text)
 
         self.label.config(text=text)
 
@@ -220,8 +184,9 @@ class TextLooper(tk.Frame):
         self.change_text()
 
     def bind_events(self):
-        for cmd in ["<Button-1>","<space>","<Return>"]:
+        for cmd in ["<Button-1>","<Return>"]:
             self.window.bind(cmd, lambda x: self.on_window_click(x,10))
+        self.window.bind("<space>", self.show_pronounciation)
         self.window.bind("<Control-w>", self.close_window)
         self.window.bind("<BackSpace>", self.change_back)
         self.window.bind("<Up>", lambda x: None)
@@ -230,6 +195,23 @@ class TextLooper(tk.Frame):
         for k,v in d.items():
             self.window.bind(k, lambda x, i=v: self.on_window_click(x,i))
 
+    def show_pronounciation(self, event):
+        if self.on_pronounciation:
+            text = word_handler.format_text(self.current_word)
+            self.label.config(text=text, fg="black")
+            self.on_pronounciation = False
+            return
+
+        if self.on_question:
+            word = self.current_word
+        else:
+            word = self.previous_word
+        pronounciation = db_handler.get_pronounciation(self.conn, self.cursor, word, settings.Global.table)
+        if pronounciation:
+            pronounciation = word_handler.format_text(pronounciation)
+            self.label.config(text=pronounciation, fg="red")
+            self.on_pronounciation = True
+
     def close_window(self, event):
         self.window.destroy()
 
@@ -237,20 +219,6 @@ class TextLooper(tk.Frame):
         self.label.destroy()
         self.window.destroy()
         create_window_with_looping_text(self.mp_counter, self.mp_trigger, self.mp_game_type)
-
-def format_text(text):
-    text_width = max(map(lambda x: len(x), text.split("\n")))
-
-    # Adjust the width threshold based on your window size and layout
-    if text_width > 12 or (contains_japanese(text) and text_width > 5) or contains_both(text):
-        if " " in text:
-            text = "\n".join(text.split())
-        else:
-            midpoint = len(text)//2
-            text = "\n".join([text[:midpoint],text[midpoint:]])
-        if "/" in text:
-            text = "/\n".join(text.split("/"))
-    return text
 
 def mp_anki_event(mp_counter, mp_trigger, mp_game_type, mp_exit_event):
     try:
@@ -269,17 +237,9 @@ def create_window_with_looping_text(mp_counter, mp_trigger, mp_game_type):
 
     window.mainloop()
 
-def sort_word_files():
-    for file in ["言葉","漢字"]:
-        with open(f"word_files/{file}") as f:
-            lines = f.readlines()
-        lines.sort()
-        with open(f"word_files/{file}", "w") as f:
-            f.write("".join(lines))
-
 def background_process(mp_counter, mp_trigger, game_type, mp_exit_event):
-    sort_word_files()
-    setup_database()
+    word_handler.sort_word_files()
+    word_handler.setup_database()
     conn, cursor = db_handler.get_db()
     while not mp_exit_event.is_set():
         time.sleep(2)
