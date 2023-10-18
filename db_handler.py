@@ -12,15 +12,16 @@ def get_db():
         database="familiarity",
     )
 
-    cursor = conn.cursor()
+    cursor = conn.cursor(buffered=True)
     return conn, cursor
 
 def create_table(conn, cursor, table):
     query = f"""
     CREATE TABLE IF NOT EXISTS {table} (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        word VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci UNIQUE,
-        translation VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci UNIQUE,
+        word VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+        translation VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+        pronounciation VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
         familiarity INT,
         probability DECIMAL(6,5),
         game VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
@@ -42,14 +43,21 @@ def add_to_table(conn, cursor, word, familiarity_update, table, game_type):
 
 def initial_add_to_table(conn, cursor, word, translation, familiarity_update, game_type, table):
     familiarity = max(1,familiarity_update + old_familiarity(conn, cursor, word, table))
+    pattern = r'^([^(\n]+?)\s*(?:\(([^)]+)\))?$'
     if "<-" in game_type:
-        word = re.sub(r' \(.*\)', '', word)
+        captured = re.search(pattern, word)
+        word = captured.group(1)
+        pronounciation = captured.group(2)
+    else:
+        captured = re.search(pattern, translation)
+        translation = captured.group(1)
+        pronounciation = captured.group(2)
     query = f"""
-        INSERT INTO {table} (word, translation, familiarity, game)
-        VALUES (%s, %s, 1, %s)
+        INSERT INTO {table} (word, translation, pronounciation, familiarity, game)
+        VALUES (%s, %s, %s, 1, %s)
         ON DUPLICATE KEY UPDATE familiarity = {familiarity};
     """
-    data = (word, translation, game_type)
+    data = (word, translation, pronounciation, game_type)
     cursor.execute(query, data)
     conn.commit()
 
