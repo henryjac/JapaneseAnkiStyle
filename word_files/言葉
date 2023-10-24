@@ -7,14 +7,14 @@ Tシャツ T-shirt
 あさごはん Breakfast
 あそびます Hang out with
 あたまがいい Smart
-あに Older Brother
-あね Older Sister
+兄 Older Brother (あに)
+姉 Older Sister (あね)
 あめ Rainy
 いいえ No
 いしゃ Doctor
 いつも Always
-いもうと Younger Sister
-いもうとさん Younger sister [your]
+妹 Younger Sister (いもうと)
+妹さん Younger sister [your] (いもうとさん)
 うるさい Annoying
 うんてんします Drive
 ええと Umm
@@ -23,11 +23,13 @@ Tシャツ T-shirt
 おかしや Pastry Shop
 おきます Wake up
 おっと Husband
-おとうと Younger Brother
-おとうとさん Younger brother [your]
+弟 Younger Brother (おとうと)
+弟さん Younger brother [your] (おとうとさん)
 おどります Dance
-おにいさん Older brother [your]
-おねえさん Older sister [your]
+お兄さん Older brother [your] (おにいさん)
+お姉さん Older sister [your] (おねえさん)
+姉妹 Sisters (しまい)
+兄弟 Brothers
 おもしろい Funny
 おんがく Music
 おんせん Hot spring
@@ -163,6 +165,7 @@ Tシャツ T-shirt
 三 Three (さん)
 中国 China (ちゅうごく)
 中国語 Chinese (ちゅうごくご)
+中学生 Middle School Student (ちゅうがくせい)
 九 Nine (く)
 五 Five (ご)
 京都 Kyoto (きょうと)
@@ -175,6 +178,7 @@ Tシャツ T-shirt
 休みます Rest (やすみます)
 会います Meet up (あいます)
 会社 Company (かいしゃ)
+住んで Lives in (すんで)
 何 What (なに)
 何ですか What is it (なんですか)
 何時 What time (なんじ)
@@ -209,7 +213,9 @@ Tシャツ T-shirt
 学生 Student (がくせい)
 家 House (いえ)
 寝室 Bedroom (しんしつ)
+小学生 Elementary School Student (しょうがくせい)
 山 Mountain (やま)
+年生 Grade [School] (ねんせい)
 庭 Garden (にわ)
 新しい New (あたらしい)
 新聞 Newspaper (しんぶん)
@@ -272,7 +278,3 @@ Tシャツ T-shirt
 高校生 High School Student (こうこうせい)
 魚 Fish (さかな)
 鳥 Bird (とり)
-中学生 Middle School Student (ちゅうがくせい)
-小学生 Elementary School Student (しょうがくせい)
-年生 Grade [School] (ねんせい)
-住んで Lives in (すんで)
