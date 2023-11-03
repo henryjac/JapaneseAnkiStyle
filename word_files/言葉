@@ -4,17 +4,12 @@ Lサイス Large [size]
 Sサイス Small [size]
 Tシャツ T-shirt
 あ Oh
-あさごはん Breakfast
 あそびます Hang out with
 あたまがいい Smart
-兄 Older Brother (あに)
-姉 Older Sister (あね)
 あめ Rainy
 いいえ No
 いしゃ Doctor
 いつも Always
-妹 Younger Sister (いもうと)
-妹さん Younger sister [your] (いもうとさん)
 うるさい Annoying
 うんてんします Drive
 ええと Umm
@@ -23,23 +18,18 @@ Tシャツ T-shirt
 おかしや Pastry Shop
 おきます Wake up
 おっと Husband
-弟 Younger Brother (おとうと)
-弟さん Younger brother [your] (おとうとさん)
 おどります Dance
-お兄さん Older brother [your] (おにいさん)
-お姉さん Older sister [your] (おねえさん)
-姉妹 Sisters (しまい)
-兄弟 Brothers
 おもしろい Funny
 おんがく Music
 おんせん Hot spring
+お兄さん Older brother [your] (おにいさん)
+お姉さん Older sister [your] (おねえさん)
 お母さん Mom [your] (おかあさん)
 お父さん Dad [your] (おとうさん)
 お茶 Green Tea (おちゃ)
 お風呂 Bath (おふろ)
 かいしゃいん Office worker
 かじ Chore
-かぞく Family
 かっこいい Cool
 かばん Bag
 から From [time]
@@ -53,13 +43,13 @@ Tシャツ T-shirt
 これ This
 こんにちは Hello
 こんばんは Good evening
-ごかぞく Family [your]
 ごろ Around [time]
+ご両親 Parent [your] (ごりょうしｎ)
+ご家族 Family [your] (ごかぞく)
 ご飯 Rice (ごはん)
 さむい Cold
 しずか Quiet
 します Play
-しゅうまつ Weekend
 しゅくだい Homework
 じゃあ Okay then
 じゅぎょう Class
@@ -72,7 +62,6 @@ Tシャツ T-shirt
 たのしい Fun
 たぶん Probably
 だいがくせい College student
-だれ Who
 ちかい Close
 ちょうど Exactly
 つかいます Use
@@ -98,11 +87,8 @@ Tシャツ T-shirt
 はな Flower
 はる Spring
 はれ Sun
-ばんごはん Dinner
 ひらがな Hiragana
-ひるごはん Lunch
 ふゆ Winter
-べんきょう Study
 べんごし Lawyer
 ほんとうに Really
 ほんとうにですか Really?
@@ -162,8 +148,13 @@ Tシャツ T-shirt
 ロック Rock
 一 One (いち)
 七 Seven (しち なな)
+万 Ten thousand (まん)
 三 Three (さん)
+上 Up (うえ)
+下 Down (した)
+両親 Parent (りょうしｎ)
 中国 China (ちゅうごく)
+中国人 Chinense person (ちゅうごく人)
 中国語 Chinese (ちゅうごくご)
 中学生 Middle School Student (ちゅうがくせい)
 九 Nine (く)
@@ -173,6 +164,7 @@ Tシャツ T-shirt
 今 Now (いま)
 今夜 Tonight (こんや)
 今日 Today (きょう)
+仕事 Work (しごと)
 休み Break (やすみ)
 休みの日 Day off (やすみのひ)
 休みます Rest (やすみます)
@@ -186,54 +178,88 @@ Tシャツ T-shirt
 何曜日 What day (なにょうび)
 何階 What floor (なんかい)
 作ります Make (つくります)
+俺 Me (おれ)
 健太 Kenta (けんた)
+働きます Working (はたらきます)
 僕 Me (ぼく)
-僕 Me (ぼく)
+兄 Older Brother (あに)
+兄弟 Brothers
 先生 Teacher
 八 Eight (はち)
 六 Six (ろく)
+円 Yen (えｎ)
+冊 Counter for books (さつ)
+冷たい Cold (つめたい)
 分 Minute (ふん/ぷん)
+前 In front of (まえ)
+勉強 Study (べんきょう)
 十 Ten (じゅう)
 千 Thousand (せん)
 午前 AM (ごぜん)
 午後 PM (ごご)
 半 Half [hours] (はん)
 卵 Egg (たまご)
+友達 Friend (ともだち)
 古い Old (ふるい)
 台所 Kitchen (だいどころ)
+右 Right (みぎ)
 名前 Name (なまえ)
 四 Four (よん)
 土曜日 Saturday (どようび)
 大学生 University Student (だいがくせい)
 大阪 Osaka (おおさか)
+好き Like (すき)
+妹 Younger Sister (いもうと)
+妹さん Younger sister [your] (いもうとさん)
+姉 Older Sister (あね)
+姉妹 Sisters (しまい)
 子 Child (こ)
+子供 Kid (こども)
 子犬 Puppy (こいぬ)
 子猫 Kitten (こねこ)
 学校 School (がっこう)
 学生 Student (がくせい)
+安い Cheap (やすい)
 家 House (いえ)
+家族 Family (かぞく)
 寝室 Bedroom (しんしつ)
 小学生 Elementary School Student (しょうがくせい)
 山 Mountain (やま)
+左 Left (ひだり)
 年生 Grade [School] (ねんせい)
 庭 Garden (にわ)
+弟 Younger Brother (おとうと)
+弟さん Younger brother [your] (おとうとさん)
+彼 He/Him (かれ)
+彼女 She/Her (かのじょ)
+後ろ Behind of (うしろ)
+忙しい Busy (いそがしい)
 新しい New (あたらしい)
 新聞 Newspaper (しんぶん)
+旅行 Travel (りょこう)
 日曜日 Sunday (にちようび)
 日本 Japan (にほん)
 日本語 Japanese (にほんご)
+明後日 Day after tomorrow (あさって)
 明日 Tomorrow (あした)
+昨日 Yesterday (きのう)
+昼ご飯 Lunch (ひるごはん)
 時間 Hour (じかん)
+晩ご飯 Dinner (ばんごはん)
 暗い Black (くらい)
 書きます Write (かきます)
 月曜日 Monday (げつようび)
+朝ご飯 Breakfast (あさごはん)
 木曜日 Thursday (もくようび)
 本 Book (ほん)
+本棚 Bookshelf (ほんだな)
 机 Desk (つくえ)
 来ます Come (きます)
 来週 Next Week (らいしゅう)
 東京 Tokyo (とうきょう)
+棚 Shelf (たな)
 椅子 Chair (いす)
+横 Beside (よこ)
 歳 Age (さい)
 母 Mom (はは)
 毎日 Every Day (まいにち)
@@ -243,10 +269,12 @@ Tシャツ T-shirt
 水曜日 Wednesday (すいようび)
 漢字 Kanji (かんじ)
 火曜日 Tuesday (かようび)
+熱い Hot (あつい)
 父 Dad (ちち)
 牛乳 Milk (ぎゅうにゅう)
 犬 Dog (いぬ)
 猫 Cat (ねこ)
+甘い Sweet (あまい)
 白い White (しろい)
 百 Hundred (ひゃく)
 直美 Naomi (なおみ)
@@ -260,18 +288,23 @@ Tシャツ T-shirt
 言葉 Word (ことば)
 話します Talk (はなします)
 読みます Read (よみます)
+誰 Who (だれ)
 豚肉 Pork (ぶたにく)
 買います Buy (かいます)
 買い物 Shopping (かいもの)
 赤い Red (あかい)
+週末 Weekend (しゅうまつ)
 部屋 Room (へや)
 野菜 Vegetables (やさい)
 金曜日 Friday (きんようび)
+隣 Next to (となり)
 零 Zero (れい)
 韓国 Korea (かんこく)
+韓国人 Korean person (かんこくじん)
 韓国語 Korean (かんこくご)
 風呂 Bathroom (ふろ)
 食べます Eat (たべます)
+食堂 Cafeteria (しょくどう)
 飲みます Drink (のみます)
 高い Tall/Expensive (たかい)
 高校 High School (こうこう)
